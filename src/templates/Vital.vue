@@ -1,26 +1,18 @@
 <template>
-    <Layout>
-        <h1>Vitals {{$page.encounter.time | luxon}}</h1>
-        {{$page.encounter.vitals.weight}}
-    </Layout>
+  <Layout>
+    <h1>Vitals {{ $page.encounter.time | luxon }}</h1>
+    {{ $page.encounter.vitals.weight }}
+  </Layout>
 </template>
 <script>
-
 import Layout from "~/layouts/Default.vue";
 
 export default {
-    components: {
-        Layout,
-    },
-    metaInfo() {
-        return {
-            title: this.$page.patient.name,
-        }
-    }
-}
-
+  components: {
+    Layout,
+  },
+};
 </script>
-
 
 <page-query>
 query ($id: ID!) {
@@ -34,7 +26,4 @@ query ($id: ID!) {
 }
 </page-query>
 
-
-<style>
-
-</style>
+<style></style>

@@ -107,7 +107,6 @@ import TipTap from "../../components/Editor/TipTap.vue";
 import { Editor, EditorContent } from "@tiptap/vue-2";
 import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
-import FloatingMenu from "@tiptap/extension-floating-menu";
 import Image from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
 
@@ -122,7 +121,6 @@ export default {
     // TipTap Editor Extension Components
     TipTap,
     EditorContent,
-    FloatingMenu,
     Image,
     Mention,
   },

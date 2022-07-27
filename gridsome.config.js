@@ -198,35 +198,9 @@ module.exports = {
         component: "./src/templates/Vital.vue",
       },
       {
-        name: "Medical History",
-        path: "/appointment/:id/intake/medical-history",
-        component: "./src/templates/history/MedicalHistory.vue",
-      },
-      {
-        name: "Social History",
-        path: "/appointment/:id/intake/social-history",
-        component: "./src/templates/history/SocialHistory.vue",
-      },
-      {
-        name: "Surgical History",
-        path: "/appointment/:id/intake/surgical-history",
-        component: "./src/templates/history/SurgicalHistory.vue",
-      },
-      {
-        name: "Chief Complaint",
-        path: "/appointment/:id/intake/chief-complaint",
-        component: "./src/templates/ChiefComplaint.vue",
-      },
-      {
         name: "Note",
         path: "/appointment/:id/note",
         component: "./src/templates/encounter/EncounterNote.vue",
-      },
-    ],
-    Order: [
-      {
-        path: "/order/:id",
-        component: ".src/templates/Order.vue",
       },
     ],
   },
