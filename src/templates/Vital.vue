@@ -1,7 +1,7 @@
 <template>
     <Layout>
-        <h1> {{$page.patient.name}}</h1>
-        <h2>{{$page.patient.mrn}}</h2>
+        <h1>Vitals {{$page.encounter.time | luxon}}</h1>
+        {{$page.encounter.vitals.weight}}
     </Layout>
 </template>
 <script>
@@ -23,12 +23,13 @@ export default {
 
 
 <page-query>
-
-query Patient ($id: ID!) {
-    patient: patient(id:$id) {
+query ($id: ID!) {
+    encounter (id: $id) {
         id
-        name
-        mrn
+        time
+        vitals {
+            weight
+        }
     }
 }
 </page-query>
