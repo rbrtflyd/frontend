@@ -156,35 +156,37 @@
       src: url("../assets/fonts/Inter-BlackItalic.woff2") format("woff2"),
            url("../assets/fonts/Inter-BlackItalic.woff") format("woff");
     }
-    */
+    
 }
+*/
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "cv08", "cpsp", "frac";
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-  @apply text-slate-700 bg-image-fog bg-cover h-screen;
-}
-
-.help-text {
-  @apply text-xs text-gray-500;
-}
-
-.help-text--emphasis {
-  @apply font-bold uppercase;
-}
-
-@layer utilities {
-  .bg-blur {
-    backdrop-filter: blur(25px);
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv08", "cpsp", "frac";
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    @apply text-slate-700 bg-image-fog bg-cover h-screen;
   }
-  .bg-blur-sm {
-    backdrop-filter: blur(5px);
+
+  .help-text {
+    @apply text-xs text-gray-500;
   }
-  .w-card {
-    width: 416px;
+
+  .help-text--emphasis {
+    @apply font-bold uppercase;
+  }
+
+  @layer utilities {
+    .bg-blur {
+      backdrop-filter: blur(25px);
+    }
+    .bg-blur-sm {
+      backdrop-filter: blur(5px);
+    }
+    .w-card {
+      width: 416px;
+    }
   }
 }
