@@ -7,6 +7,12 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-regular-svg-icons": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/pro-regular-svg-icons": "^6.1.2",
+    "@fortawesome/pro-solid-svg-icons": "^6.1.2",
+    "@fortawesome/vue-fontawesome": "^2.0.8",
     "@gridsome/source-airtable": "^0.2.0",
     "@tiptap/extension-floating-menu": "^2.0.0-beta.56",
     "@tiptap/extension-highlight": "^2.0.0-beta.35",
@@ -14,7 +20,9 @@
     "@tiptap/extension-mention": "^2.0.0-beta.102",
     "@tiptap/starter-kit": "^2.0.0-beta.191",
     "@tiptap/vue-2": "^2.0.0-beta.84",
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.0",
+    "vue-luxon": "^0.10.0",
+    "vue-tailwind": "^2.5.1"
   },
   "overrides": {
     "gridsome": {
