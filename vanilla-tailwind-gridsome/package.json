@@ -7,6 +7,18 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@gridsome/source-airtable": "^0.2.0",
     "gridsome": "^0.7.0"
+  },
+  "overrides": {
+    "gridsome": {
+      "sharp": "0.29.3"
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "gridsome-plugin-tailwindcss2": "^3.0.1",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6"
   }
 }
