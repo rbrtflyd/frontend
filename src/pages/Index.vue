@@ -1,9 +1,6 @@
 <template>
   <Layout>
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <g-image alt="Example image" src="~/favicon.png" width="135" />
-
-    <h1>Hello, world!</h1>
+    <h1 class="text-lg text-orange-400">Hello, world!</h1>
 
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur
@@ -22,7 +19,6 @@
         >GitHub</a
       >
     </p>
-    cgange
   </Layout>
 </template>
 
