@@ -43,7 +43,7 @@ module.exports = {
         "3xl": "1800px",
       },
       backgroundImage: {
-        "image-fog": "url('../src/assets/img/bg-image.png')",
+        "image-fog": "url('~@/assets/img/bg-img.png')",
       },
     },
   },

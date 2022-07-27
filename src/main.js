@@ -241,8 +241,6 @@ import {
   faShare as fasShare,
 } from "@fortawesome/pro-solid-svg-icons";
 
-import "./assets/tailwind.css";
-
 // Add Specific FontAwesome Icons
 library.add(
   faBell,

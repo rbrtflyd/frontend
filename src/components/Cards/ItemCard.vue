@@ -66,4 +66,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.checkedIn_active {
+  @apply text-blue-500;
+}
+.roomed_active {
+  @apply text-blue-500;
+}
+</style>
