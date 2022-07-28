@@ -25,7 +25,7 @@ module.exports = {
       width: {
         editorSubMenu: "508px",
         moduleCard: "416px",
-        sidebar: "368px",
+        sidebar: "425px",
       },
       colors: {
         fog: "#F3F5F9",

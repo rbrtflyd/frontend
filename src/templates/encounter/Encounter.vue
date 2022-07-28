@@ -19,9 +19,14 @@
       <t-button variant="secondary">Test</t-button>
     </template>
     <template slot="page-content">
-      {{ $page.encounter.apptTime | luxon }}
-      {{ $page.encounter.patient.name }}
-      <t-button :to="$page.encounter.path + 'note'">Begin Encounter</t-button>
+      <div class="flex flex-row gap-x-4">
+        <module-card
+          :moduleTitle="$page.encounter.apptTime | luxon"
+          :moduleSubTitle="$page.encounter.room"
+          :footerButton1="$page.encounter.path + 'note'"
+          footerButton1_text="Begin"
+        />
+      </div>
     </template>
     <template #spaceNav>
       <t-button
@@ -41,6 +46,7 @@ query ($id: ID!) {
     apptTime
     status
     path
+    room
     vitals {
             id
     heartRate
@@ -71,20 +77,22 @@ query ($id: ID!) {
 <script>
 import SpaceVue from "../../layouts/Space.vue";
 import ItemCard from "../../components/Cards/ItemCard.vue";
+import ModuleCard from "../../components/Cards/Modules/ModuleCard.vue";
 
 export default {
   components: {
     SpaceVue,
     ItemCard,
+    ModuleCard,
   },
   data() {
-    return {};
+    return {
+      module: {
+        notePath: "/note",
+      },
+    };
   },
-  computed: {
-    nextAppt() {
-      return this.$page.user.appointments;
-    },
-  },
+  computed: {},
   methods: {},
 };
 </script>

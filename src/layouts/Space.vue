@@ -1,25 +1,30 @@
 <template>
-  <div>
-    <global-navigation/>
-    <div class="flex flex-col">
-      <space-sidebar class="sidebar" :title="spaceTitle" :meta="spaceMeta" :actions="hasSidebarActions">
-          <template #sidebarList >
-            <slot name="spaceSidebarList"/>
-          </template>
-          <template #sidebarActions>
-            <slot name="spaceSidebarActions"/>
-          </template>
+  <div class="flex flex-col">
+    <global-navigation />
+    <div class="flex flex-row grow items-stretch">
+      <space-sidebar
+        class="sidebar"
+        :title="spaceTitle"
+        :meta="spaceMeta"
+        :actions="hasSidebarActions"
+      >
+        <template #sidebarList>
+          <slot name="spaceSidebarList" />
+        </template>
+        <template #sidebarActions>
+          <slot name="spaceSidebarActions" />
+        </template>
       </space-sidebar>
-      <div class="z-10 flex flex-col justify-between w-full pl-96">
-        <div class="overflow-scroll pt-9">
-          <div class="flex flex-row gap-4 page-content">
-            <slot name="page-content"/>
-          </div>
+      <div class="z-10 flex flex-col justify-between w-full pl-9 h-full">
+        <div
+          class="flex flex-row gap-4 page-content overflow-scroll pt-9 h-full w-full"
+        >
+          <slot name="page-content" />
         </div>
-        <div class="pb-9 mr-9">
+        <div class="pb-9 mr-9 justify-self-end">
           <space-navigation>
             <template #spaceNavigationButtons>
-              <slot name="spaceNav"/>
+              <slot name="spaceNav" />
             </template>
           </space-navigation>
         </div>
@@ -33,27 +38,25 @@
 </static-query>
 
 <script>
-import GlobalNavigation from '../components/Navigation/GlobalNavigation.vue'
-import SpaceSidebar from '../components/Structural/SpaceSidebar.vue'
-import SpaceNavigation from '../components/Navigation/SpaceNavigation.vue'
+import GlobalNavigation from "../components/Navigation/GlobalNavigation.vue";
+import SpaceSidebar from "../components/Structural/SpaceSidebar.vue";
+import SpaceNavigation from "../components/Navigation/SpaceNavigation.vue";
 
 export default {
   components: {
     GlobalNavigation,
     SpaceSidebar,
-    SpaceNavigation
-},
+    SpaceNavigation,
+  },
   props: [
-    'sidebar',
-    'page-content',
-    'spaceNav',
-    'spaceTitle',
-    'spaceMeta',
-    'hasSidebarActions'
-  ]
-}
+    "sidebar",
+    "page-content",
+    "spaceNav",
+    "spaceTitle",
+    "spaceMeta",
+    "hasSidebarActions",
+  ],
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
