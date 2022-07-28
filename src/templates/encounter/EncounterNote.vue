@@ -63,7 +63,7 @@
 <page-query>
 query ($id: ID!) {
   encounter (id: $id) {
-    time
+    apptTime
     status
     chiefComplaint
     vitals {
@@ -81,15 +81,6 @@ query ($id: ID!) {
     }
     user {
       name
-      appointments {
-        id
-        time
-        path
-        status
-        patient {
-            name
-        }
-      }
     }
     patient {
     name

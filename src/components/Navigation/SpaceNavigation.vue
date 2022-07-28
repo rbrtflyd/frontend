@@ -1,6 +1,8 @@
-<template >
+<template>
   <div>
-    <div class="bottom-0 w-full p-6 bg-white space-nav rounded-2xl drop-shadow">
+    <div
+      class="bottom-0 w-full p-6 bg-white space-nav rounded-2xl shadow shadow-slate-900/10"
+    >
       <div class="flex flex-row gap-x-4">
         <slot name="spaceNavigationButtons"></slot>
       </div>
@@ -9,21 +11,13 @@
 </template>
 
 <script>
-
-
 export default {
-  components: { 
-
-    },
-  name: 'SpaceNavigation',
-  props: {
-
+  components: {},
+  name: "SpaceNavigation",
+  props: {},
+  data() {
+    return {};
   },
-  data () {
-    return {
-    }
-  }
-}
+};
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

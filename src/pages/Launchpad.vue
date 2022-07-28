@@ -28,12 +28,12 @@
               <item-card
                 v-for="edge in $page.encounters.edges"
                 item_type="appointment"
-                :appointmentTime="edge.node.time | luxon"
+                :appointmentTime="edge.node.apptTime | luxon"
                 :key="edge.node.id"
                 variant="tertiary"
                 :path="edge.node.path"
                 :itemHeading="edge.node.patient.name"
-                :appointmentStatus="edge.node.status"
+                :status="edge.node.status"
               />
               <t-button to="/appointment/recxtbIo9wlbJDycu/">+23 More</t-button>
             </div>
@@ -60,6 +60,7 @@
                   variant="tertiary"
                   :itemHeading="edge.node.patient.name"
                   :appointmentTime="edge.node.name"
+                  :status="edge.node.status"
                 />
                 <t-button to="/appointment/recxtbIo9wlbJDycu/"
                   >See all Orders</t-button
@@ -122,11 +123,11 @@
         }
       }
     }
-    encounters: allEncounter {
+    encounters: allEncounter (sort: [{by: "apptTime", order: ASC}]) {
       edges {
         node {
           id
-          time
+          apptTime
           status
           path
           patient {
@@ -140,6 +141,7 @@
         node {
           name
           id
+          status
           patient {
             name
           }

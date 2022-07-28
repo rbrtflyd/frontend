@@ -18,7 +18,7 @@ export default {
 query ($id: ID!) {
     encounter (id: $id) {
         id
-        time
+        apptTime
         vitals {
             weight
         }
