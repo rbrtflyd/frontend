@@ -206,6 +206,7 @@ import {
   faArrowUp,
   faSearch,
   faTimes,
+  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -229,6 +230,7 @@ import {
   faArrowUp as farArrowUp,
   faSearch as farSearch,
   faTimes as farTimes,
+  faClock as farClock,
 } from "@fortawesome/pro-regular-svg-icons";
 
 import {
@@ -239,6 +241,7 @@ import {
   faPrescription as fasPrescription,
   faWalking as fasWalking,
   faShare as fasShare,
+  faClock as fasClock,
 } from "@fortawesome/pro-solid-svg-icons";
 
 // Add Specific FontAwesome Icons
@@ -284,7 +287,9 @@ library.add(
   farArrowUp,
   faSearch,
   farSearch,
-  farTimes
+  farTimes,
+  farClock,
+  fasClock
 );
 
 export default function(Vue, { router, head, isClient }) {

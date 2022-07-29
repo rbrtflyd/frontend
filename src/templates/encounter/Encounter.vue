@@ -20,7 +20,7 @@
     </template>
     <template slot="page-content">
       <div class="flex flex-row gap-x-4">
-        <module-card
+        <module-card-base
           :moduleTitle="$page.encounter.apptTime | luxon"
           :moduleSubTitle="$page.encounter.room"
           :footerButton1="$page.encounter.path + 'note'"
@@ -77,13 +77,13 @@ query ($id: ID!) {
 <script>
 import SpaceVue from "../../layouts/Space.vue";
 import ItemCard from "../../components/Cards/ItemCard.vue";
-import ModuleCard from "../../components/Cards/Modules/ModuleCard.vue";
+import ModuleCardBase from "../../components/Cards/Modules/ModuleCardBase.vue";
 
 export default {
   components: {
     SpaceVue,
     ItemCard,
-    ModuleCard,
+    ModuleCardBase,
   },
   data() {
     return {

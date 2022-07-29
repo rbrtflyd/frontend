@@ -1,8 +1,8 @@
 <template>
   <g-link
     class="p-4 leading-none rounded-2xl bg-white border border-transparent shadow shadow-slate-900/10"
-    :exact-active-class="'border border-emerald-200'"
-    :active-class="'border border-emerald-200 opactiy-100'"
+    :exact-active-class="''"
+    :active-class="''"
     :to="path"
   >
     <div class="mb-2">
@@ -10,24 +10,41 @@
     </div>
     <div v-if="item_type != 'message'">
       <div class="flex flex-row items-center space-x-3 leading-none">
-        <div class="text-sm font-semibold">
-          {{ appointmentTime }}
+        <div
+          class="text-xs font-semibold flex flex-row gap-x-1 text-slate-500 items-center"
+        >
+          <font-awesome-icon
+            icon="fa-solid fa-clock"
+            size="sm"
+            v-if="item_type == 'appointment'"
+          />
+          <div v-if="isNow || isNext">
+            <span v-if="isNow">Now</span>
+            <span v-if="isNext">Next</span>
+          </div>
+          <span v-else>{{ appointmentTime }} </span>
         </div>
         <div v-if="item_type === 'appointment'" class="flex flex-row space-x-3">
           <div
             class="text-xs"
             :class="[isCheckedIn ? 'text-blue-600' : 'text-slate-400']"
-            v-if="status === null || 'Checked In' || 'Roomed'"
+            v-if="status"
           >
-            <font-awesome-icon :icon="['far', 'check-circle']" class="mr-0.5" />
+            <font-awesome-icon
+              icon="fa-regular fa-circle-check"
+              class="mr-0.5"
+            />
             Checked In
           </div>
           <div
             class="text-xs"
             :class="[isRoomed ? 'text-blue-600' : 'text-slate-400']"
-            v-if="status === 'Checked In' || 'Roomed'"
+            v-if="status != 'No Status'"
           >
-            <font-awesome-icon :icon="['far', 'sign-in']" class="mr-1" />Roomed
+            <font-awesome-icon
+              icon="fa-regular fa-sign-in"
+              class="mr-1"
+            />Roomed
           </div>
         </div>
         <div v-if="item_type === 'order'" class="flex flex-row space-x-3">
@@ -58,9 +75,11 @@ export default {
   },
   data() {
     return {
-      isCheckedIn: this.status === "Checked In" || "Roomed",
+      isCheckedIn: this.status != "No Status",
       isRoomed: this.status === "Roomed",
       orderStatus: this.status === "Filled",
+      isNow: this.appointmentTime == "8:30 AM",
+      isNext: this.appointmentTime == "8:45 AM",
     };
   },
   computed: {

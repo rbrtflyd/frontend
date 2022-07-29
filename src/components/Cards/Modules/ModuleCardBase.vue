@@ -7,7 +7,7 @@
       :headerSubTitle="moduleSubTitle"
     />
     <div class="px-4 py-4 grow overflow-scroll">
-      Content
+      <slot name="moduleContent" />
     </div>
     <module-footer
       :primaryButtonPath="footerButton1"
@@ -23,7 +23,7 @@ import ModuleFooter from "./ModuleFooter.vue";
 import ModuleHeader from "./ModuleHeader.vue";
 
 export default {
-  name: "ModuleCard",
+  name: "ModuleCardBase",
   props: [
     "moduleTitle",
     "moduleSubTitle",
@@ -31,6 +31,7 @@ export default {
     "footerButton2",
     "footerButton3",
     "footerButton1_text",
+    "moduleContent",
   ],
   components: {
     ModuleHeader,
