@@ -20,11 +20,9 @@
     </template>
     <template slot="page-content">
       <div class="flex flex-row gap-x-4">
-        <module-card-base
-          :moduleTitle="$page.encounter.apptTime | luxon"
-          :moduleSubTitle="$page.encounter.room"
-          :footerButton1="$page.encounter.path + 'note'"
-          footerButton1_text="Begin"
+        <patient-overview-module
+          :cardTitle="$page.encounter.patient.name"
+          :chiefCompalint="$page.encounter.chiefComplaint"
         />
       </div>
     </template>
@@ -47,6 +45,7 @@ query ($id: ID!) {
     status
     path
     room
+    chiefComplaint
     vitals {
             id
     heartRate
@@ -77,13 +76,15 @@ query ($id: ID!) {
 <script>
 import SpaceVue from "../../layouts/Space.vue";
 import ItemCard from "../../components/Cards/ItemCard.vue";
-import ModuleCardBase from "../../components/Cards/Modules/ModuleCardBase.vue";
+import ModuleCardBase from "../../components/Cards/Modules/ModuleBase/ModuleCardBase.vue";
+import PatientOverviewModule from "../../components/Cards/Modules/ModuleTemplates/PatientOverviewModule.vue";
 
 export default {
   components: {
     SpaceVue,
     ItemCard,
     ModuleCardBase,
+    PatientOverviewModule,
   },
   data() {
     return {
@@ -100,5 +101,15 @@ export default {
 <style>
 .active {
   opacity: 100%;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

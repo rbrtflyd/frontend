@@ -16,11 +16,13 @@
         </template>
       </space-sidebar>
       <div class="z-10 flex flex-col justify-between w-full pl-9 h-full">
-        <div
-          class="flex flex-row gap-4 page-content overflow-scroll pt-9 h-full w-full"
-        >
-          <slot name="page-content" />
-        </div>
+        <transition>
+          <main
+            class="flex flex-row gap-4 page-content overflow-scroll pt-9 h-full w-full"
+          >
+            <slot name="page-content" />
+          </main>
+        </transition>
         <div class="pb-9 mr-9 justify-self-end">
           <space-navigation>
             <template #spaceNavigationButtons>
@@ -59,4 +61,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

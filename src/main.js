@@ -288,6 +288,8 @@ library.add(
   faSearch,
   farSearch,
   farTimes,
+  faTimes,
+  faClock,
   farClock,
   fasClock
 );
