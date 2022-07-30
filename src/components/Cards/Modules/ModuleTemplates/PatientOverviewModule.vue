@@ -4,14 +4,16 @@
     :moduleSubTitle="$page.encounter.room"
     :footerButton1="$page.encounter.path + 'note'"
     footerButton1_text="Begin"
+    :footerButton2="$page.encounter.patient.path"
+    footerButton2_text="View Chart"
   >
     <template #moduleContent>
       <div class="w-full flex flex-row items-center justify-between mb-6">
-        <t-tag variant="apptType">Follow Up</t-tag>
+        <t-tag variant="apptType">{{ apptType }}</t-tag>
         <div class="flex flex-row text-xs gap-x-2">
-          <span>53 yo</span>
-          <span>Female</span>
-          <span>She/Her</span>
+          <span>{{ age }} yo</span>
+          <span>{{ sex }}</span>
+          <span>{{ pronouns }}</span>
         </div>
       </div>
       <div class="w-full">
@@ -36,6 +38,10 @@ export default {
   props: {
     cardTitle: String,
     chiefCompalint: String,
+    age: Number,
+    sex: String,
+    pronouns: String,
+    apptType: String,
   },
 };
 </script>

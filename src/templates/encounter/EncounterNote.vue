@@ -67,23 +67,26 @@ query ($id: ID!) {
     status
     chiefComplaint
     vitals {
-        id
-        weight
-        heartRate
-        bloodPressure
-        pulseOx
-        temperature
-    heartRate
-    bloodPressure
-    pulseOx
-    temperature
-    weight
+      id
+      weight
+      heartRate
+      bloodPressure
+      pulseOx
+      temperature
+      heartRate
+      bloodPressure
+      pulseOx
+      temperature
+      weight
     }
     user {
       name
     }
     patient {
-    name
+      name
+      age
+      sex
+      pronouns
     }
   }
 }
