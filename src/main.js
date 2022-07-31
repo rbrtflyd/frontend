@@ -28,7 +28,7 @@ const VueTailwindComponents = {
       fixedClasses: "block font-medium focus:outline-none transition-colors",
       // Classes are applied to the component without any variant (the default)
       classes:
-        "text-gray-900 px-4 py-1 rounded-xl border-2 border-transparent hover:bg-gray-0 hover:text-gray-600 hover:border-gray-400 text-base",
+        "text-gray-900 bg-slate-100 px-4 py-1 rounded-xl border-2 border-transparent hover:bg-gray-0 hover:text-gray-600 hover:border-gray-400 text-base",
       // Variants define specific types of components with styling and are added via variant= when writing the component
       variants: {
         primary:

@@ -1,15 +1,15 @@
 <template>
   <Layout>
     <div class="container">
-      <div class="mt-6">
-        <h1 class="mb-4 text-3xl lg:mb-2 md:text-2xl">
+      <div class="mt-14">
+        <h1 class="mb-4 text-3xl md:text-2xl leading-none">
           Welcome back, Dr. Cooper
         </h1>
         <div class="mb-12 text-2xl lg:mb-6 grid-header md:text-lg">
           <h2 class="inline">
             Today is
           </h2>
-          <h2 class="inline opacity-50">
+          <h2 class="inline font-semibold">
             {{ day }}
           </h2>
         </div>
