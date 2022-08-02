@@ -37,14 +37,28 @@
             </div>
           </div>
           <div class="mb-6">
-            <h2 class="mb-3 text-lg font-semibold">Chief Complaint</h2>
-            <span class="text-lg border-b-2 border-blue-500 bg-blue-50">{{
+            <h2 class="mb-3 text-xl font-semibold">Chief Complaint</h2>
+            <span class="text-xl border-b-2 border-blue-500 bg-blue-50">{{
               $page.encounter.chiefComplaint
             }}</span>
           </div>
           <div>
-            <floating-menu> </floating-menu>
-            <editor-content :editor="editor" class="tiptap-editor" />
+            <t-button
+              :editor="editor"
+              @click="
+                editor
+                  .chain()
+                  .focus()
+                  .createParagraphNear()
+                  .insertContent('General')
+                  .toggleHeading({ level: 2 })
+                  .createParagraphNear()
+                  .insertContent('<p></p>')
+                  .run()
+              "
+              >Assessment</t-button
+            >
+            <editor-content :editor="editor" class="tiptap-editor text-xl" />
           </div>
         </div>
         <div
@@ -97,7 +111,6 @@ import VitalItemCard from "../../components/Cards/VitalItemCard.vue";
 import FlowDetail from "../../layouts/FlowDetail.vue";
 
 // import TipTap Foundaiton
-import TipTap from "../../components/Editor/TipTap.vue";
 import { Editor, EditorContent } from "@tiptap/vue-2";
 import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
@@ -113,7 +126,7 @@ export default {
     VitalItemCard,
 
     // TipTap Editor Extension Components
-    TipTap,
+    Editor,
     EditorContent,
     Image,
     Mention,
@@ -143,98 +156,7 @@ export default {
       content: `
             <h1> Editor ready</h1>
             `,
-      extensions: [
-        StarterKit,
-        Highlight,
-        Commands.configure({
-          suggestion: {
-            items: (query) => {
-              return [
-                {
-                  title: "HPI",
-                  command: ({ editor, range }) => {
-                    editor
-                      .chain()
-                      .focus()
-                      .deleteRange(range)
-                      .insertText("HPI")
-                      .toggleHeading({ level: 2 })
-                      .createParagraphNear()
-                      .insertHTML("<p></p>")
-                      .run();
-                  },
-                },
-                {
-                  title: "Exam",
-                  command: ({ editor, range }) => {
-                    editor
-                      .chain()
-                      .focus()
-                      .deleteRange(range)
-                      .insertText("Exam")
-                      .toggleHeading({ level: 2 })
-                      .createParagraphNear()
-                      .insertHTML("<p></p>")
-                      .run();
-                  },
-                },
-                {
-                  title: "Assessment",
-                  command: ({ editor, range }) => {
-                    editor
-                      .chain()
-                      .focus()
-                      .deleteRange(range)
-                      .insertText("HPI")
-                      .toggleHeading({ level: 2 })
-                      .createParagraphNear()
-                      .insertHTML("<p></p>")
-                      .run();
-                  },
-                },
-              ]
-                .filter((item) =>
-                  item.title.toLowerCase().startsWith(query.toLowerCase())
-                )
-                .slice(0, 10);
-            },
-            render: () => {
-              let component;
-              let popup;
-              return {
-                onStart: (props) => {
-                  component = new VueRenderer(CommandsList, {
-                    parent: this,
-                    propsData: props,
-                  });
-                  popup = tippy("body", {
-                    getReferenceClientRect: props.clientRect,
-                    appendTo: () => document.body,
-                    content: component.element,
-                    showOnCreate: true,
-                    interactive: true,
-                    trigger: "manual",
-                    placement: "bottom-start",
-                  });
-                },
-                onUpdate(props) {
-                  component.updateProps(props);
-                  popup[0].setProps({
-                    getReferenceClientRect: props.clientRect,
-                  });
-                },
-                onKeyDown(props) {
-                  return component.ref?.onKeyDown(props);
-                },
-                onExit() {
-                  popup[0].destroy();
-                  component.destroy();
-                },
-              };
-            },
-          },
-        }),
-      ],
+      extensions: [StarterKit, Highlight],
       editorProps: {
         attributes: {
           // Style the editor by default
@@ -251,4 +173,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.tiptap-editor h2 {
+  @apply font-semibold;
+}
+</style>

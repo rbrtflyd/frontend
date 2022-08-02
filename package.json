@@ -34,6 +34,7 @@
     "autoprefixer": "^10.4.7",
     "gridsome-plugin-tailwindcss2": "^3.0.1",
     "postcss": "^8.4.14",
+    "postcss-nesting": "^10.1.10",
     "tailwindcss": "^3.1.6"
   }
 }
