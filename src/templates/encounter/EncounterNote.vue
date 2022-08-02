@@ -122,6 +122,19 @@ export default {
   data() {
     return {
       editor: null,
+      // General Note Toolbar
+      hpi: "HPI",
+      exam: "Exam",
+      assessment: "Assessment",
+      plan: "Plan",
+      // Exam Toolbar
+      general: "General",
+      heent: "HEENT",
+      chest: "Chest",
+      heart: "Heart",
+      abdomen: "Abdomen",
+      skin: "Skin",
+      extremities: "Extremities",
     };
   },
 
@@ -130,7 +143,98 @@ export default {
       content: `
             <h1> Editor ready</h1>
             `,
-      extensions: [StarterKit, Highlight],
+      extensions: [
+        StarterKit,
+        Highlight,
+        Commands.configure({
+          suggestion: {
+            items: (query) => {
+              return [
+                {
+                  title: "HPI",
+                  command: ({ editor, range }) => {
+                    editor
+                      .chain()
+                      .focus()
+                      .deleteRange(range)
+                      .insertText("HPI")
+                      .toggleHeading({ level: 2 })
+                      .createParagraphNear()
+                      .insertHTML("<p></p>")
+                      .run();
+                  },
+                },
+                {
+                  title: "Exam",
+                  command: ({ editor, range }) => {
+                    editor
+                      .chain()
+                      .focus()
+                      .deleteRange(range)
+                      .insertText("Exam")
+                      .toggleHeading({ level: 2 })
+                      .createParagraphNear()
+                      .insertHTML("<p></p>")
+                      .run();
+                  },
+                },
+                {
+                  title: "Assessment",
+                  command: ({ editor, range }) => {
+                    editor
+                      .chain()
+                      .focus()
+                      .deleteRange(range)
+                      .insertText("HPI")
+                      .toggleHeading({ level: 2 })
+                      .createParagraphNear()
+                      .insertHTML("<p></p>")
+                      .run();
+                  },
+                },
+              ]
+                .filter((item) =>
+                  item.title.toLowerCase().startsWith(query.toLowerCase())
+                )
+                .slice(0, 10);
+            },
+            render: () => {
+              let component;
+              let popup;
+              return {
+                onStart: (props) => {
+                  component = new VueRenderer(CommandsList, {
+                    parent: this,
+                    propsData: props,
+                  });
+                  popup = tippy("body", {
+                    getReferenceClientRect: props.clientRect,
+                    appendTo: () => document.body,
+                    content: component.element,
+                    showOnCreate: true,
+                    interactive: true,
+                    trigger: "manual",
+                    placement: "bottom-start",
+                  });
+                },
+                onUpdate(props) {
+                  component.updateProps(props);
+                  popup[0].setProps({
+                    getReferenceClientRect: props.clientRect,
+                  });
+                },
+                onKeyDown(props) {
+                  return component.ref?.onKeyDown(props);
+                },
+                onExit() {
+                  popup[0].destroy();
+                  component.destroy();
+                },
+              };
+            },
+          },
+        }),
+      ],
       editorProps: {
         attributes: {
           // Style the editor by default
