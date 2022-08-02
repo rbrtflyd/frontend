@@ -1,6 +1,15 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+export default {
+  scan: {
+    dirs: ["./"],
+    exclude: ["node_modules", ".git", "dist", ".cache", ".temp"],
+  },
+  preflight: {
+    alias: {
+      // add gridsome aliases
+      "g-link": "a",
+      "g-image": "img",
+    },
+  },
   theme: {
     extend: {
       container: {
