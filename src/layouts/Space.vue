@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <global-navigation />
-    <div class="flex flex-row grow items-stretch">
+    <div class="flex flex-row flex-grow items-stretch">
       <space-sidebar
         class="sidebar"
         :title="spaceTitle"

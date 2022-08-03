@@ -8,10 +8,9 @@ module.exports = {
   siteName: "HealthcareOS",
   plugins: [
     {
-      use: "gridsome-plugin-tailwindcss2",
+      use: "gridsome-plugin-windicss",
       options: {
-        tailwindConfigFile: "./tailwind.config.js",
-        mainCssFile: "./src/main.css",
+        // see https://github.com/windicss/vite-plugin-windicss/blob/main/packages/plugin-utils/src/options.ts
       },
     },
     {

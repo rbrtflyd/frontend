@@ -5,7 +5,7 @@
     :patientName="$page.encounter.patient.name"
   >
     <template #content>
-      <div class="flex flex-row gap-x-6 grow">
+      <div class="flex flex-row gap-x-6 flex-grow">
         <div class="w-3/5">
           <div class="mb-6 border-b border-slate-200">
             <h2 class="mb-3 text-lg font-semibold">Vitals</h2>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <div
-          class="p-6 bg-slateTransparent-3 justify-self-stretch grow rounded-2xl"
+          class="p-6 bg-slateTransparent-3 justify-self-stretch flex-grow rounded-2xl"
         >
           <span class="font-bold text-slate-600">Suggestions</span>
         </div>
@@ -173,8 +173,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.tiptap-editor h2 {
+<style>
+.editor-container h2 {
   @apply font-semibold;
 }
 </style>
