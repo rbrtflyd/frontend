@@ -37,7 +37,8 @@
         v-bind:index="index"
         variant="buttonXl"
         :to="appointments.path"
-        >Previous {{ appointments.apptTime | luxon }}
+        >Previous {{ appointments.patient.name }}
+        {{ appointments.apptTime | luxon }}
       </t-button>
       <t-button
         v-for="(appointments, index) in nextAppointment"
@@ -115,8 +116,11 @@ export default {
     currentAppointment() {
       return this.$page.encounter;
     },
+    userAppointments() {
+      return this.$page.encounter.user.appointments;
+    },
     previousAppointment() {
-      return this.$page.encounter.user.appointments.filter((appointment) => {
+      return this.userAppointments.filter((appointment) => {
         return (
           appointment.apptTime != this.currentAppointment.apptTime &&
           appointment.apptTime < this.currentAppointment.apptTime
@@ -124,11 +128,10 @@ export default {
       });
     },
     nextAppointment() {
-      return this.$page.encounter.user.appointments.filter((appointment) => {
+      return this.userAppointments.filter((appointment) => {
         return (
           appointment.apptTime != this.currentAppointment.apptTime &&
-          appointment.apptTime > this.currentAppointment.apptTime &&
-          appointment.index < appointment.index - 2
+          appointment.apptTime > this.currentAppointment.apptTime
         );
       });
     },
