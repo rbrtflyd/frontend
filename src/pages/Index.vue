@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center w-full h-screen place-content-center">
     <h1 class="text-xl font-bold ">Welcome to HealthcareOS</h1>
-    <t-button variant="primary" to="/launchpad">Start</t-button>
+    <t-button variant="primaryGreen" to="/launchpad">Start</t-button>
   </div>
 </template>
 

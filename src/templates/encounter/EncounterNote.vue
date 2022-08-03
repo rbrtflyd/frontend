@@ -43,21 +43,28 @@
             }}</span>
           </div>
           <div>
-            <t-button
+            <floating-menu
               :editor="editor"
-              @click="
-                editor
-                  .chain()
-                  .focus()
-                  .createParagraphNear()
-                  .insertContent('General')
-                  .toggleHeading({ level: 2 })
-                  .createParagraphNear()
-                  .insertContent('<p></p>')
-                  .run()
-              "
-              >Assessment</t-button
+              :tippy-options="{ duration: 100 }"
+              class="menu"
+              v-if="editor"
             >
+              <t-button
+                :editor="editor"
+                @click="
+                  editor
+                    .chain()
+                    .focus()
+                    .createParagraphNear()
+                    .insertContent('General')
+                    .toggleHeading({ level: 2 })
+                    .createParagraphNear()
+                    .insertContent('<p></p>')
+                    .run()
+                "
+                >Assessment</t-button
+              >
+            </floating-menu>
             <editor-content :editor="editor" class="tiptap-editor text-xl" />
           </div>
         </div>
@@ -116,6 +123,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
+import FloatingMenu from "@tiptap/extension-floating-menu";
 
 export default {
   name: "EncounterNote",
@@ -130,6 +138,7 @@ export default {
     EditorContent,
     Image,
     Mention,
+    FloatingMenu,
   },
 
   data() {
@@ -156,7 +165,7 @@ export default {
       content: `
             <h1> Editor ready</h1>
             `,
-      extensions: [StarterKit, Highlight],
+      extensions: [StarterKit, Highlight, FloatingMenu],
       editorProps: {
         attributes: {
           // Style the editor by default
