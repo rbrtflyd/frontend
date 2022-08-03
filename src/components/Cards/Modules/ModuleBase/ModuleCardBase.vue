@@ -13,7 +13,9 @@
       :primaryButtonPath="footerButton1"
       :primaryButtonText="footerButton1_text"
       :secondaryButtonPath="footerButton2"
+      :secondaryButtonText="footerButton2_text"
       :tertiaryButtonPath="footerButton3"
+      :tertiaryButtonText="footerButton3_text"
     />
   </div>
 </template>
@@ -31,6 +33,8 @@ export default {
     "footerButton2",
     "footerButton3",
     "footerButton1_text",
+    "footerButton2_text",
+    "footerButton3_text",
     "moduleContent",
   ],
   components: {
