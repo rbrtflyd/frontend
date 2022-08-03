@@ -6,7 +6,7 @@
       :headerTitle="moduleTitle"
       :headerSubTitle="moduleSubTitle"
     />
-    <div class="px-4 py-4 grow overflow-scroll">
+    <div class="px-4 py-4 flex-grow overflow-scroll">
       <slot name="moduleContent" />
     </div>
     <module-footer
