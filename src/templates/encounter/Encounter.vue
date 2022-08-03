@@ -32,12 +32,21 @@
     </template>
     <template #spaceNav>
       <t-button
-        v-for="appointments in $page.encounter.user.appointments"
+        v-for="(appointments, index) in previousAppointment"
         :key="appointments.id"
+        v-bind:index="index"
         variant="buttonXl"
         :to="appointments.path"
-        >{{ appointments.apptTime | luxon }}</t-button
-      >
+        >Previous {{ appointments.apptTime | luxon }}
+      </t-button>
+      <t-button
+        v-for="(appointments, index) in nextAppointment"
+        :key="appointments.id"
+        v-bind:index="index"
+        variant="buttonXl"
+        :to="appointments.path"
+        >Next {{ appointments.apptTime | luxon }}
+      </t-button>
     </template>
   </space-vue>
 </template>
@@ -102,7 +111,28 @@ export default {
       },
     };
   },
-  computed: {},
+  computed: {
+    currentAppointment() {
+      return this.$page.encounter;
+    },
+    previousAppointment() {
+      return this.$page.encounter.user.appointments.filter((appointment) => {
+        return (
+          appointment.apptTime != this.currentAppointment.apptTime &&
+          appointment.apptTime < this.currentAppointment.apptTime
+        );
+      });
+    },
+    nextAppointment() {
+      return this.$page.encounter.user.appointments.filter((appointment) => {
+        return (
+          appointment.apptTime != this.currentAppointment.apptTime &&
+          appointment.apptTime > this.currentAppointment.apptTime &&
+          appointment.index < appointment.index - 2
+        );
+      });
+    },
+  },
   methods: {},
 };
 </script>

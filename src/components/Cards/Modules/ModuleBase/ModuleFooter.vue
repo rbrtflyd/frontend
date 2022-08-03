@@ -3,7 +3,7 @@
     class="flex flex-row w-full px-4 py-2 border-t border-slate-200 justify-between bg-white-10"
   >
     <div class="flex flex-row gap-x-3">
-      <t-button :to="primaryButtonPath" variant="primary">{{
+      <t-button :to="primaryButtonPath" variant="primaryGreen">{{
         primaryButtonText
       }}</t-button>
       <t-button
