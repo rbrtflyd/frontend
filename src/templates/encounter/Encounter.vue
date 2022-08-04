@@ -33,26 +33,29 @@
     <template #spaceNav>
       <div>
         <t-button
-          v-for="(appointments, index) in previousAppointment"
+          v-for="(appointments, index) in nextItem"
+          :key="appointments.id"
+          v-bind:index="index"
+          variant="buttonXl"
+          :to="appointments.path"
+          class="hidden first:block space-x-4"
+          ><span class="font-semibold">Next</span>
+          {{ appointments.patient.name }}
+          <font-awesome-icon icon="fa-regular fa-arrow-down" />
+        </t-button>
+      </div>
+      <div v-if="previousItem">
+        <t-button
+          v-for="(appointments, index) in previousItem"
           :key="appointments.id"
           v-bind:index="index"
           variant="buttonXl"
           :to="appointments.path"
           class="hidden last:block"
-          >Previous{{ appointments.patient.name }}
-          {{ appointments.apptTime | luxon }}
-        </t-button>
-      </div>
-      <div>
-        <t-button
-          v-for="(appointments, index) in nextAppointment"
-          :key="appointments.id"
-          v-bind:index="index"
-          variant="buttonXl"
-          :to="appointments.path"
-          class="hidden first:block"
-          >Next{{ appointments.patient.name
-          }}{{ appointments.apptTime | luxon }}
+        >
+          <span class="font-semibold">{{ appointments.apptTime | luxon }}</span>
+          {{ appointments.patient.name }}
+          <font-awesome-icon icon="fa-regular fa-arrow-up" />
         </t-button>
       </div>
     </template>
@@ -120,25 +123,25 @@ export default {
     };
   },
   computed: {
-    currentAppointment() {
+    currentItem() {
       return this.$page.encounter;
     },
-    userAppointments() {
+    userItems() {
       return this.$page.encounter.user.appointments;
     },
-    previousAppointment() {
-      return this.userAppointments.filter((appointment) => {
+    previousItem() {
+      return this.userItems.filter((appointment) => {
         return (
-          appointment.apptTime != this.currentAppointment.apptTime &&
-          appointment.apptTime < this.currentAppointment.apptTime
+          appointment.apptTime != this.currentItem.apptTime &&
+          appointment.apptTime < this.currentItem.apptTime
         );
       });
     },
-    nextAppointment() {
-      return this.userAppointments.filter((appointment) => {
+    nextItem() {
+      return this.userItems.filter((appointment) => {
         return (
-          appointment.apptTime != this.currentAppointment.apptTime &&
-          appointment.apptTime > this.currentAppointment.apptTime
+          appointment.apptTime != this.currentItem.apptTime &&
+          appointment.apptTime > this.currentItem.apptTime
         );
       });
     },
