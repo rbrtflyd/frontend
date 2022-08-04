@@ -14,6 +14,7 @@
     "@fortawesome/pro-solid-svg-icons": "^6.1.2",
     "@fortawesome/vue-fontawesome": "^2.0.8",
     "@gridsome/source-airtable": "^0.2.0",
+    "@tiptap/extension-bubble-menu": "^2.0.0-beta.61",
     "@tiptap/extension-floating-menu": "^2.0.0-beta.56",
     "@tiptap/extension-highlight": "^2.0.0-beta.35",
     "@tiptap/extension-image": "^2.0.0-beta.30",

@@ -31,23 +31,30 @@
       </div>
     </template>
     <template #spaceNav>
-      <t-button
-        v-for="(appointments, index) in previousAppointment"
-        :key="appointments.id"
-        v-bind:index="index"
-        variant="buttonXl"
-        :to="appointments.path"
-        >Previous {{ appointments.patient.name }}
-        {{ appointments.apptTime | luxon }}
-      </t-button>
-      <t-button
-        v-for="(appointments, index) in nextAppointment"
-        :key="appointments.id"
-        v-bind:index="index"
-        variant="buttonXl"
-        :to="appointments.path"
-        >Next {{ appointments.apptTime | luxon }}
-      </t-button>
+      <div>
+        <t-button
+          v-for="(appointments, index) in previousAppointment"
+          :key="appointments.id"
+          v-bind:index="index"
+          variant="buttonXl"
+          :to="appointments.path"
+          class="hidden last:block"
+          >Previous{{ appointments.patient.name }}
+          {{ appointments.apptTime | luxon }}
+        </t-button>
+      </div>
+      <div>
+        <t-button
+          v-for="(appointments, index) in nextAppointment"
+          :key="appointments.id"
+          v-bind:index="index"
+          variant="buttonXl"
+          :to="appointments.path"
+          class="hidden first:block"
+          >Next{{ appointments.patient.name
+          }}{{ appointments.apptTime | luxon }}
+        </t-button>
+      </div>
     </template>
   </space-vue>
 </template>

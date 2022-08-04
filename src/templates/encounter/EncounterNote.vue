@@ -65,6 +65,13 @@
                 >Assessment</t-button
               >
             </floating-menu>
+            <bubble-menu
+              :editor="editor"
+              :tippy-options="{ duration: 100 }"
+              v-if="editor"
+            >
+              Test
+            </bubble-menu>
             <editor-content :editor="editor" class="tiptap-editor text-xl" />
           </div>
         </div>
@@ -124,6 +131,7 @@ import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
 import FloatingMenu from "@tiptap/extension-floating-menu";
+import BubbleMenu from "@tiptap/extension-bubble-menu";
 
 export default {
   name: "EncounterNote",
@@ -139,6 +147,7 @@ export default {
     Image,
     Mention,
     FloatingMenu,
+    BubbleMenu,
   },
 
   data() {
