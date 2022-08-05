@@ -46,7 +46,7 @@ const VueTailwindComponents = {
         icon:
           "flex flex-col items-center w-12 h-12 mr-5 text-2xl text-white bg-blue-600 rounded-full justify-center hover:bg-blue-900",
         buttonXl:
-          "bg-white min-w-64 flex flex-row space-between text-sm rounded-xl border-gray-200 border-2 xl:text-sm 2xl:text-base xl:p-4 2xl:p-4 hover:bg-gray-100 flex flex-row justify-between items-center gap-x-4",
+          "bg-white space-x-4 flex flex-row space-between text-sm rounded-xl border-gray-100 border-2 xl:text-sm 2xl:text-base xl:p-4 2xl:p-4 hover:bg-gray-100 items-center",
         enlargeButton:
           "bg-white rounded-xl border-gray-200 border-2 p-3 w-full text-left hover:bg-gray-100 hover:text-gray-600 trasition-colors",
         cardButton:

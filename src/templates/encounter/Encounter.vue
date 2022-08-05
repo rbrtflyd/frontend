@@ -40,7 +40,7 @@
           :to="appointments.path"
           class="hidden first:block space-x-4"
           ><span class="font-semibold">Next</span>
-          {{ appointments.patient.name }}
+          <span>{{ appointments.patient.name }}</span>
           <font-awesome-icon icon="fa-regular fa-arrow-down" />
         </t-button>
       </div>
