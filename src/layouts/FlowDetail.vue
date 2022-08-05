@@ -4,7 +4,7 @@
     <flow-detail-navigation :title="flowHeaderTitle" :context="flowContext" />
     <div class="flex flex-row h-full">
       <patient-sidebar :patientName="patientName" />
-      <div class="px-8 pt-6 content flex-grow">
+      <div class="px-8 py-6 content flex-grow relative">
         <slot name="content" />
       </div>
     </div>

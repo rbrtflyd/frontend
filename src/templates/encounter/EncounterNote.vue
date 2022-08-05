@@ -299,7 +299,10 @@
           <span class="font-bold text-slate-600">Suggestions</span>
         </div>
       </div>
-      <div class="flex flex-row px-3 py-2 bg-white rounded-xl drop-shadow-xl">
+      <div
+        class="flex flex-row px-3 py-2 bg-white rounded-xl drop-shadow-xl absolute inset-x-0 bottom-0 mb-6 mr-6"
+      >
+        <t-rich-select>Test</t-rich-select>
         <t-button>Wrap Up</t-button>
       </div>
     </template>
@@ -417,7 +420,7 @@ export default {
 }
 
 .editor-toolbar {
-  @apply text-sm bg-gray-900 text-white rounded-lg flex flex-row z-50;
+  @apply text-sm bg-gray-900 text-white rounded-lg flex flex-row;
 
   &::-webkit-scrollbar {
     display: none;
