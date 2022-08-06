@@ -45,6 +45,7 @@
           <div>
             <floating-menu
               :editor="editor"
+              :tippyOptions="{ maxWidth: 'none' }"
               v-if="editor"
               class="hidden transition-all editor-toolbar"
             >
@@ -248,6 +249,7 @@
             <bubble-menu
               :editor="editor"
               :tippy-options="{ duration: 100 }"
+              class="bg-white p-2 border border-slate-200 flex flex-row gap-x-2"
               v-if="editor"
             >
               <button
@@ -302,7 +304,15 @@
       <div
         class="flex flex-row px-3 py-2 bg-white rounded-xl drop-shadow-xl absolute inset-x-0 bottom-0 mb-6 mr-6"
       >
-        <t-rich-select>Test</t-rich-select>
+        <t-rich-select
+          placeholder="Select an option"
+          :options="[
+            { value: 1, label: 'Option 1' },
+            { value: 2, label: 'Option 2' },
+            { value: 3, label: 'Option 3' },
+          ]"
+        >
+        </t-rich-select>
         <t-button>Wrap Up</t-button>
       </div>
     </template>
@@ -417,6 +427,10 @@ export default {
 <style>
 .editor-container h2 {
   @apply font-semibold;
+}
+
+.tippy-bx {
+  max-width: none !important;
 }
 
 .editor-toolbar {
