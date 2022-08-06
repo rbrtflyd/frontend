@@ -37,10 +37,10 @@
             </div>
           </div>
           <div class="mb-6">
-            <h2 class="mb-3 text-xl font-semibold">Chief Complaint</h2>
-            <span class="text-xl border-b-2 border-blue-500 bg-blue-50">{{
-              $page.encounter.chiefComplaint
-            }}</span>
+            <editor-content
+              :editor="chiefComplaintDoc"
+              class="tiptap-editor text-xl z-50"
+            />
           </div>
           <div>
             <floating-menu
@@ -358,9 +358,11 @@ import FlowDetail from "../../layouts/FlowDetail.vue";
 // import TipTap Foundaiton
 import { Editor, EditorContent, FloatingMenu, BubbleMenu } from "@tiptap/vue-2";
 import StarterKit from "@tiptap/starter-kit";
+import Document from "@tiptap/extension-document";
 import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
+import suggestion from "../../extensions/suggestion";
 
 export default {
   name: "EncounterNote",
@@ -403,11 +405,40 @@ export default {
   },
 
   mounted() {
+    this.chiefComplaintDoc = new Editor({
+      extensions: [StarterKit, Highlight],
+      editorProps: {
+        attributes: {
+          // Style the editor by default
+          class:
+            "editor-container focus:outline-none focus:ring-0 my-4 max-w-prose",
+        },
+      },
+      content: `<h2>Chief Complaint</h2><p><mark>${
+        this.$page.encounter.chiefComplaint
+      }</mark> <p>`,
+    });
     this.editor = new Editor({
       content: `
             <h1> Editor ready</h1>
             `,
-      extensions: [StarterKit, Highlight],
+      extensions: [
+        StarterKit,
+        Highlight.configure({
+          multicolor: true,
+          HTMLAttributes: {
+            class: "highlight",
+          },
+        }),
+        Mention.configure({
+          suggestion: {
+            allowedPrefixes: null,
+          },
+          HTMLAttributes: {
+            class: "mention",
+          },
+        }),
+      ],
       editorProps: {
         attributes: {
           // Style the editor by default
@@ -425,16 +456,32 @@ export default {
 </script>
 
 <style>
-.editor-container h2 {
-  @apply font-semibold;
+.editor-container {
+  h2 {
+    @apply font-semibold mt-4;
+  }
+  p {
+    @apply mt-2;
+  }
 }
 
 .tippy-bx {
   max-width: none !important;
 }
 
+.mention {
+  border: 1px solid #000;
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.3rem;
+  box-decoration-break: clone;
+}
+
+.hightlight {
+  @apply border-b-2 border-blue-500 bg-blue-200;
+}
+
 .editor-toolbar {
-  @apply text-sm bg-gray-900 text-white rounded-lg flex flex-row;
+  @apply text-sm bg-gray-900 text-white rounded-lg flex flex-row overflow-hidden;
 
   &::-webkit-scrollbar {
     display: none;
