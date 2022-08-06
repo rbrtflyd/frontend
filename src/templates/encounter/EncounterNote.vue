@@ -359,6 +359,7 @@ import FlowDetail from "../../layouts/FlowDetail.vue";
 import { Editor, EditorContent, FloatingMenu, BubbleMenu } from "@tiptap/vue-2";
 import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
+import Placeholder from "@tiptap/extension-placeholder";
 import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
@@ -416,14 +417,12 @@ export default {
       },
       content: `<h2>Chief Complaint</h2><p><mark>${
         this.$page.encounter.chiefComplaint
-      }</mark> <p>`,
+      }</mark></p>`,
     });
     this.editor = new Editor({
-      content: `
-            <h1> Editor ready</h1>
-            `,
       extensions: [
         StarterKit,
+        suggestion,
         Highlight.configure({
           multicolor: true,
           HTMLAttributes: {
@@ -431,12 +430,16 @@ export default {
           },
         }),
         Mention.configure({
-          suggestion: {
-            allowedPrefixes: null,
+          renderLabel({ node }) {
+            return `${node.attrs.label ?? node.attrs.id}`;
           },
           HTMLAttributes: {
             class: "mention",
           },
+          suggestion,
+        }),
+        Placeholder.configure({
+          placeholder: "Begin typing...",
         }),
       ],
       editorProps: {
@@ -470,10 +473,7 @@ export default {
 }
 
 .mention {
-  border: 1px solid #000;
-  border-radius: 0.4rem;
-  padding: 0.1rem 0.3rem;
-  box-decoration-break: clone;
+  @apply border-b-2 border-blue-500 bg-blue-50 px;
 }
 
 .hightlight {

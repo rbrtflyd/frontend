@@ -89,7 +89,7 @@ export default {
 
 <style>
 .items {
-  @apply p-2 relative bg-white overflow-hidden text-sm rounded-lg shadow-md;
+  @apply p-2 relative bg-white overflow-hidden text-sm rounded-lg shadow-md overflow-scroll;
 }
 
 .item {

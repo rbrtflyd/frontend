@@ -33,7 +33,7 @@ export default {
       "Lisa Bonet",
     ]
       .filter((item) => item.toLowerCase().startsWith(query.toLowerCase()))
-      .slice(0, 5);
+      .slice(0, 12);
   },
 
   render: () => {
