@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { NodeViewContent, nodeViewProps, NodeViewWrapper } from "@tiptap/vue-3";
+import { NodeViewContent, nodeViewProps, NodeViewWrapper } from "@tiptap/vue-2";
 
 export default {
   props: nodeViewProps,

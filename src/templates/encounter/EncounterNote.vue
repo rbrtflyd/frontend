@@ -364,6 +364,8 @@ import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
 import suggestion from "../../extensions/suggestion";
+import DraggableItem from "../../extensions/draggableItem";
+// import Suggestion from "@tiptap/suggestion";
 
 export default {
   name: "EncounterNote",
@@ -422,7 +424,7 @@ export default {
     this.editor = new Editor({
       extensions: [
         StarterKit,
-        suggestion,
+        DraggableItem,
         Highlight.configure({
           multicolor: true,
           HTMLAttributes: {
@@ -430,13 +432,16 @@ export default {
           },
         }),
         Mention.configure({
+          suggestion: {
+            char: "/",
+            decorationClass: "mention",
+          },
           renderLabel({ node }) {
             return `${node.attrs.label ?? node.attrs.id}`;
           },
           HTMLAttributes: {
             class: "mention",
           },
-          suggestion,
         }),
         Placeholder.configure({
           placeholder: "Begin typing...",
