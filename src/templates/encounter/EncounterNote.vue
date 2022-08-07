@@ -432,10 +432,7 @@ export default {
           },
         }),
         Mention.configure({
-          suggestion: {
-            char: "/",
-            decorationClass: "mention",
-          },
+          suggestion,
           renderLabel({ node }) {
             return `${node.attrs.label ?? node.attrs.id}`;
           },

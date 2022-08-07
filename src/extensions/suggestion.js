@@ -4,6 +4,12 @@ import tippy from "tippy.js";
 import MentionList from "../components/Editor/MentionList";
 
 export default {
+  char: "/",
+
+  decorationClass: "customMention",
+
+  allowedPrefixes: null,
+
   items: ({ query }) => {
     return [
       "Lea Thompson",
@@ -94,4 +100,5 @@ export default {
       },
     };
   },
+  decorationTag: "div",
 };
