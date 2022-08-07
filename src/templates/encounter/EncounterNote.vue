@@ -356,7 +356,13 @@ import VitalItemCard from "../../components/Cards/VitalItemCard.vue";
 import FlowDetail from "../../layouts/FlowDetail.vue";
 
 // import TipTap Foundaiton
-import { Editor, EditorContent, FloatingMenu, BubbleMenu } from "@tiptap/vue-2";
+import {
+  Editor,
+  EditorContent,
+  FloatingMenu,
+  BubbleMenu,
+  VueRenderer,
+} from "@tiptap/vue-2";
 import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -365,7 +371,10 @@ import Image from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
 import suggestion from "../../extensions/suggestion";
 import DraggableItem from "../../extensions/draggableItem";
-// import Suggestion from "@tiptap/suggestion";
+import MentionList from "../../components/Editor/MentionList.vue";
+
+// import Tippy.js
+import tippy from "tippy.js";
 
 export default {
   name: "EncounterNote",
@@ -432,7 +441,109 @@ export default {
           },
         }),
         Mention.configure({
-          suggestion,
+          suggestion: {
+            char: "/",
+            decorationTag: `a`,
+            decorationClass: "customMention",
+
+            allowedPrefixes: null,
+
+            items: ({ query }) => {
+              return [
+                this.$page.encounter.vitals.bloodPressure,
+                this.$page.encounter.vitals.heartRate,
+                this.$page.encounter.vitals.temperature,
+                /*"Lea Thompson",
+                "Cyndi Lauper",
+                "Tom Cruise",
+                "Madonna",
+                "Jerry Hall",
+                "Joan Collins",
+                "Winona Ryder",
+                "Christina Applegate",
+                "Alyssa Milano",
+                "Molly Ringwald",
+                "Ally Sheedy",
+                "Debbie Harry",
+                "Olivia Newton-John",
+                "Elton John",
+                "Michael J. Fox",
+                "Axl Rose",
+                "Emilio Estevez",
+                "Ralph Macchio",
+                "Rob Lowe",
+                "Jennifer Grey",
+                "Mickey Rourke",
+                "John Cusack",
+                "Matthew Broderick",
+                "Justine Bateman",
+                "Lisa Bonet",*/
+              ];
+              /* .filter((item) =>
+                  item.toLowerCase().startsWith(query.toLowerCase())
+                )
+                .slice(0, 12);*/
+            },
+
+            render: () => {
+              let component;
+              let popup;
+
+              return {
+                onStart: (props) => {
+                  component = new VueRenderer(MentionList, {
+                    // using vue 2:
+                    parent: this,
+                    propsData: props,
+                    // using vue 3:
+                    // props,
+                    // editor: props.editor,
+                  });
+
+                  if (!props.clientRect) {
+                    return;
+                  }
+
+                  popup = tippy("body", {
+                    getReferenceClientRect: props.clientRect,
+                    appendTo: () => document.body,
+                    content: component.element,
+                    showOnCreate: true,
+                    interactive: true,
+                    trigger: "manual",
+                    placement: "bottom-start",
+                  });
+                },
+
+                onUpdate(props) {
+                  component.updateProps(props);
+
+                  if (!props.clientRect) {
+                    return;
+                  }
+
+                  popup[0].setProps({
+                    getReferenceClientRect: props.clientRect,
+                  });
+                },
+
+                onKeyDown(props) {
+                  if (props.event.key === "Escape") {
+                    popup[0].hide();
+
+                    return true;
+                  }
+
+                  return component.ref?.onKeyDown(props);
+                },
+
+                onExit() {
+                  popup[0].destroy();
+                  component.destroy();
+                },
+              };
+            },
+          },
           renderLabel({ node }) {
             return `${node.attrs.label ?? node.attrs.id}`;
           },

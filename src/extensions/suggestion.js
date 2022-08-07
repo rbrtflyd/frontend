@@ -5,13 +5,14 @@ import MentionList from "../components/Editor/MentionList";
 
 export default {
   char: "/",
-
+  decorationTag: `a`,
   decorationClass: "customMention",
 
   allowedPrefixes: null,
 
   items: ({ query }) => {
     return [
+      $this.page.encounter.patient.vitals,
       "Lea Thompson",
       "Cyndi Lauper",
       "Tom Cruise",
@@ -100,5 +101,4 @@ export default {
       },
     };
   },
-  decorationTag: "div",
 };
