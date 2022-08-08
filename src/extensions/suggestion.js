@@ -12,7 +12,6 @@ export default {
 
   items: ({ query }) => {
     return [
-      $this.page.encounter.patient.vitals,
       "Lea Thompson",
       "Cyndi Lauper",
       "Tom Cruise",

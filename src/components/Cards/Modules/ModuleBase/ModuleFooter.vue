@@ -3,18 +3,18 @@
     class="flex flex-row w-full px-4 py-2 border-t border-slate-200 justify-between bg-white-10"
   >
     <div class="flex flex-row gap-x-3">
-      <t-button :to="primaryButtonPath" variant="primaryGreen">{{
-        primaryButtonText
+      <t-button :to="primaryButton.path" variant="primaryGreen">{{
+        primaryButton.text
       }}</t-button>
       <t-button
-        v-if="secondaryButtonPath && secondaryButtonText"
-        :to="secondaryButtonPath"
+        v-if="secondaryButton.path && secondaryButton.text"
+        :to="secondaryButton.path"
         variant="secondary"
-        >{{ secondaryButtonText }}</t-button
+        >{{ secondaryButton.text }}</t-button
       >
     </div>
-    <div v-if="tertiaryButtonPath && tertiaryButtonText">
-      <t-button :to="tertiaryButtonPath">{{ tertiaryButtonText }}</t-button>
+    <div v-if="tertiaryButton.path && tertiaryButton.text">
+      <t-button :to="tertiaryButton.path">{{ tertiaryButton.text }}</t-button>
     </div>
   </div>
 </template>
@@ -24,12 +24,18 @@ export default {
   name: "ModuleFooter",
   components: {},
   props: {
-    primaryButtonPath: String,
-    primaryButtonText: String,
-    secondaryButtonPath: String,
-    secondaryButtonText: String,
-    tertiaryButtonPath: String,
-    tertiaryButtonText: String,
+    primaryButton: {
+      path: String,
+      text: String,
+    },
+    secondaryButton: {
+      path: String,
+      text: String,
+    },
+    tertiaryButton: {
+      path: String,
+      text: String,
+    },
   },
   data() {
     return {};

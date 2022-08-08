@@ -10,12 +10,9 @@
       <slot name="moduleContent" />
     </div>
     <module-footer
-      :primaryButtonPath="footerButton1"
-      :primaryButtonText="footerButton1_text"
-      :secondaryButtonPath="footerButton2"
-      :secondaryButtonText="footerButton2_text"
-      :tertiaryButtonPath="footerButton3"
-      :tertiaryButtonText="footerButton3_text"
+      :primaryButton="{ path: footerButton1, text: footerButton1_text }"
+      :secondaryButton="{ path: footerButton2, text: footerButton2_text }"
+      :tertiaryButton="{ path: footerButton3, text: footerButton3_text }"
     />
   </div>
 </template>

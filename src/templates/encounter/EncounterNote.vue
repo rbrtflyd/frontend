@@ -11,28 +11,45 @@
             <h2 class="mb-3 text-lg font-semibold">Vitals</h2>
             <div class="flex flex-row mb-6 gap-x-2">
               <vital-item-card
-                type="Weight"
-                unit="lbs"
-                :value="$page.encounter.vitals.weight"
+                :item="{
+                  value: $page.encounter.vitals.weight,
+                  vitalType: 'Weight',
+                  unit: 'lbs',
+                }"
               />
               <vital-item-card
-                type="Heart Rate"
-                unit="bpm"
-                :value="$page.encounter.vitals.heartRate"
+                :item="{
+                  value: $page.encounter.vitals.heartRate,
+                  vitalType: 'Heart Rate',
+                  unit: 'bpm',
+                }"
               />
               <vital-item-card
-                type="BP"
-                :value="$page.encounter.vitals.bloodPressure"
+                :item="{
+                  value: $page.encounter.vitals.bloodPressure,
+                  vitalType: 'BP',
+                }"
               />
               <vital-item-card
-                type="Temp"
-                unit="F"
-                :value="$page.encounter.vitals.temperature"
+                :item="{
+                  value: $page.encounter.vitals.temperature,
+                  vitalType: 'Temp',
+                  unit: 'F',
+                }"
               />
               <vital-item-card
-                type="Sp02"
-                unit="%"
-                :value="$page.encounter.vitals.pulseOx"
+                :item="{
+                  value: $page.encounter.vitals.pulseOx,
+                  vitalType: 'Sp02',
+                  unit: '%',
+                }"
+              />
+              <vital-item-card
+                :item="{
+                  value: $page.encounter.vitals.pulseOx,
+                  vitalType: 'Sp02',
+                  unit: '%',
+                }"
               />
             </div>
           </div>
@@ -333,10 +350,6 @@ query ($id: ID!) {
       pulseOx
       temperature
       heartRate
-      bloodPressure
-      pulseOx
-      temperature
-      weight
     }
     user {
       name
@@ -367,7 +380,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
 import Placeholder from "@tiptap/extension-placeholder";
 import Highlight from "@tiptap/extension-highlight";
-import Image from "@tiptap/extension-image";
+import TipTapImage from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
 import suggestion from "../../extensions/suggestion";
 import DraggableItem from "../../extensions/draggableItem";
@@ -387,7 +400,7 @@ export default {
     // TipTap Editor Extension Components
     Editor,
     EditorContent,
-    Image,
+    TipTapImage,
     Mention,
     FloatingMenu,
     BubbleMenu,
@@ -396,6 +409,8 @@ export default {
   data() {
     return {
       editor: null,
+      chiefComplaintDoc: null,
+      item: null,
       // General Note Toolbar
       hpi: "HPI",
       exam: "Exam",
@@ -416,9 +431,24 @@ export default {
     };
   },
 
+  computed: {
+    patientMeta() {
+      return this.$page.encounter.patient;
+    },
+    encounterVitals() {
+      return this.$page.encounter.vitals;
+    },
+  },
   mounted() {
     this.chiefComplaintDoc = new Editor({
-      extensions: [StarterKit, Highlight],
+      extensions: [
+        StarterKit,
+        Highlight.configure({
+          HTMLAttributes: {
+            class: "chief-complaint-highlight",
+          },
+        }),
+      ],
       editorProps: {
         attributes: {
           // Style the editor by default
@@ -433,6 +463,11 @@ export default {
     this.editor = new Editor({
       extensions: [
         StarterKit,
+        Placeholder.configure({
+          placeholder: "Begin typing...",
+          emptyEditorClass: "is-editor-empty",
+          emptyNodeClass: "my-custom-is-empty-class",
+        }),
         DraggableItem,
         Highlight.configure({
           multicolor: true,
@@ -443,46 +478,21 @@ export default {
         Mention.configure({
           suggestion: {
             char: "/",
-            decorationTag: `a`,
-            decorationClass: "customMention",
-
             allowedPrefixes: null,
 
             items: ({ query }) => {
               return [
-                this.$page.encounter.vitals.bloodPressure,
-                this.$page.encounter.vitals.heartRate,
-                this.$page.encounter.vitals.temperature,
-                /*"Lea Thompson",
-                "Cyndi Lauper",
-                "Tom Cruise",
-                "Madonna",
-                "Jerry Hall",
-                "Joan Collins",
-                "Winona Ryder",
-                "Christina Applegate",
-                "Alyssa Milano",
-                "Molly Ringwald",
-                "Ally Sheedy",
-                "Debbie Harry",
-                "Olivia Newton-John",
-                "Elton John",
-                "Michael J. Fox",
-                "Axl Rose",
-                "Emilio Estevez",
-                "Ralph Macchio",
-                "Rob Lowe",
-                "Jennifer Grey",
-                "Mickey Rourke",
-                "John Cusack",
-                "Matthew Broderick",
-                "Justine Bateman",
-                "Lisa Bonet",*/
-              ];
-              /* .filter((item) =>
+                `${this.patientMeta.name}`,
+                `${this.patientMeta.age}`,
+                `${this.patientMeta.sex}`,
+                `${this.encounterVitals.weight}`,
+                `${this.encounterVitals.bloodPressure}`,
+                `${this.encounterVitals.temperature}`,
+              ]
+                .filter((item) =>
                   item.toLowerCase().startsWith(query.toLowerCase())
                 )
-                .slice(0, 12);*/
+                .slice(0, 12);
             },
 
             render: () => {
@@ -550,9 +560,8 @@ export default {
           HTMLAttributes: {
             class: "mention",
           },
-        }),
-        Placeholder.configure({
-          placeholder: "Begin typing...",
+          decorationTag: "a",
+          decorationClass: "customMention",
         }),
       ],
       editorProps: {
@@ -587,6 +596,10 @@ export default {
 
 .mention {
   @apply border-b-2 border-blue-500 bg-blue-50 px;
+}
+
+.chief-complaint-highlight {
+  @apply border-b-2 border-blue-500 bg-blue-50;
 }
 
 .hightlight {
