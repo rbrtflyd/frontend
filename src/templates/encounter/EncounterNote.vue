@@ -380,9 +380,9 @@ import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
 import Placeholder from "@tiptap/extension-placeholder";
 import Highlight from "@tiptap/extension-highlight";
+import Link from "@tiptap/extension-link";
 import TipTapImage from "@tiptap/extension-image";
 import Mention from "@tiptap/extension-mention";
-import suggestion from "../../extensions/suggestion";
 import DraggableItem from "../../extensions/draggableItem";
 import MentionList from "../../components/Editor/MentionList.vue";
 
@@ -404,6 +404,8 @@ export default {
     Mention,
     FloatingMenu,
     BubbleMenu,
+    Placeholder,
+    Link,
   },
 
   data() {
