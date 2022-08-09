@@ -4,6 +4,8 @@
 
 This is a prototype for <a href="https://www.alloy.health/healthcareos">HealthcareOS</a> a next-generation EHR from <a href="https://www.alloy.health/">Alloy Health</a>.
 
+![github-healthcareOS-social](https://user-images.githubusercontent.com/67548487/183712961-b8d92d67-6c3c-4b30-903e-f1feb20d94a6.png)
+
 ## About HealthcareOS
 <strong>healthcareOS</strong> is an ambitious rethinking of the traditional EMR. It uses a modular system to empower clinicians to access the information they need quickly and easily.
 
