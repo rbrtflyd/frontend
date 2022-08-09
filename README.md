@@ -1,14 +1,9 @@
-# Default starter for Gridsome
+# The Great Nile River
 
-This is the project you get when you run `gridsome create new-project`.
+This is a prototype for <a href="https://www.alloy.health/healthcareos">HealthcareOS</a> a next-generation EHR from <a href="https://www.alloy.health/">Alloy Health</a>.
 
-### 1. Install Gridsome CLI tool if you don't have
+## About HealthcareOS
+<strong>healthcareOS</strong> is an ambitious rethinking of the traditional EMR. It uses a modular system to empower clinicians to access the information they need quickly and easily.
 
-`npm install --global @gridsome/cli`
-
-### 2. Create a Gridsome project
-
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+## About this Repo
+This repository is a static-site generator prototype for HealthcareOS. Built on Vue.js and Gridsome. This project attempts to prototype the core features and flows of the product so that the concept can be tested with clinicians.
