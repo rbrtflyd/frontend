@@ -482,12 +482,12 @@ export default {
 
             items: ({ query }) => {
               return [
-                `${this.patientMeta.name}`,
-                `${this.patientMeta.age}`,
-                `${this.patientMeta.sex}`,
-                `${this.encounterVitals.weight}`,
-                `${this.encounterVitals.bloodPressure}`,
-                `${this.encounterVitals.temperature}`,
+                `Name ${this.patientMeta.name}`,
+                `Age ${this.patientMeta.age}`,
+                `Sex ${this.patientMeta.sex}`,
+                `Weight ${this.encounterVitals.weight}`,
+                `Blood Pressure ${this.encounterVitals.bloodPressure}`,
+                `Temperature ${this.encounterVitals.temperature}`,
               ]
                 .filter((item) =>
                   item.toLowerCase().startsWith(query.toLowerCase())
