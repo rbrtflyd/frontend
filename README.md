@@ -1,6 +1,6 @@
 # The Great Nile River
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d01c0f55-1454-4755-a743-94c035bc2fe3//deploy-status?branch=main)](https://app.netlify.com/sites/healthcareos-demo/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d01c0f55-1454-4755-a743-94c035bc2fe3/deploy-status)](https://app.netlify.com/sites/healthcareos-demo/deploys)
 
 This is a prototype for <a href="https://www.alloy.health/healthcareos">HealthcareOS</a> a next-generation EHR from <a href="https://www.alloy.health/">Alloy Health</a>.
 
