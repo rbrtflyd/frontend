@@ -1,14 +1,22 @@
-# Default starter for Gridsome
+# The Great Nile River
 
-This is the project you get when you run `gridsome create new-project`.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d01c0f55-1454-4755-a743-94c035bc2fe3/deploy-status)](https://app.netlify.com/sites/healthcareos-demo/deploys)
 
-### 1. Install Gridsome CLI tool if you don't have
+This is a prototype for <a href="https://www.alloy.health/healthcareos">HealthcareOS</a> a next-generation EHR from <a href="https://www.alloy.health/">Alloy Health</a>.
 
-`npm install --global @gridsome/cli`
+## About HealthcareOS
+<strong>healthcareOS</strong> is an ambitious rethinking of the traditional EMR. It uses a modular system to empower clinicians to access the information they need quickly and easily.
 
-### 2. Create a Gridsome project
+## About this Repo
+This repository is a static-site generator prototype for HealthcareOS. Built on Vue.js and Gridsome. This project attempts to prototype the core features and flows of the product so that the concept can be tested with clinicians.
 
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+### Under the Covers
+<ul>
+<li><strong>Framework</strong> Vue.js</li>
+<li><strong>Static Site Generator</strong> Gridsome</li>
+<li><strong>Database</strong> Airtable</li>
+<li><strong>Styling</strong> Tailwind via Windi.CSS</li>
+<li><strong>Component Library</strong> Vue-Tailwind</li>
+<li><strong>Editor</strong> TipTap</li>
+<li><strong>Hosting/Deployment</strong> Netlify</li>
+</ul>
