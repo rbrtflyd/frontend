@@ -80,7 +80,11 @@ module.exports = {
             typeName: "Medication", // required
             select: {}, // optional,
             links: [
-              // optional
+              {
+                fieldName: "Patient",
+                typeName: "Patient",
+                linkToFirst: true,
+              },
             ],
           },
           {
