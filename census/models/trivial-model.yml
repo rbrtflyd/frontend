@@ -1,0 +1,6 @@
+---
+model:trivial-model:
+  name: Trivial Model
+  query: SELECT 1 AS id, 'Planet Express'::text AS company_name
+  description:
+  connection: data_warehouse:redshift

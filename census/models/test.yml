@@ -1,0 +1,6 @@
+---
+model:test:
+  name: Test
+  query: select * FROM users
+  description:
+  connection: data_warehouse:snowflake-ak23255-census-official-avoid-modifying
